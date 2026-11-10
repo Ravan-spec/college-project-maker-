@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d1b">
+<title>Software Projects | Project Maker</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#080d1b;color:white;font-family:Arial,sans-serif}
+header{padding:19px;border-bottom:1px solid #293650;font-weight:bold;color:#8eafff}
+main{max-width:750px;margin:auto;padding:22px 16px 60px}
+.back{color:#91b2ff;text-decoration:none;display:inline-block;margin-bottom:24px}
+.hero{background:linear-gradient(135deg,#172c55,#39246b);padding:25px;border-radius:18px}
+.icon{font-size:42px}
+h1{font-size:27px;margin:12px 0}
+p{color:#aab8d1;font-size:14px;line-height:1.6}
+h2{font-size:19px;margin:25px 0 14px}
+.card{background:#111a2c;border:1px solid #293650;border-radius:14px;padding:18px;margin-bottom:13px}
+input,textarea,select{width:100%;padding:14px;background:#080d1b;border:1px solid #35435e;color:white;border-radius:9px;margin-top:10px;font-size:14px}
+textarea{min-height:110px;resize:vertical}
+button{background:#779aff;color:#080d1b;padding:13px 19px;border:0;border-radius:9px;font-weight:bold;margin-top:15px}
+.result{white-space:pre-wrap;line-height:1.7;color:#d4def3;margin-top:15px}
+</style>
+</head>
+
+<body>
+
+<header>PROJECT MAKER</header>
+
+<main>
+
+<a class="back" href="../index.html">← Back to Home</a>
+
+<section class="hero">
+<div class="icon">💻</div>
+<h1>Software Projects</h1>
+<p>Create website, mobile application, desktop software and coding projects with an organized workspace.</p>
+</section>
+
+<h2>Software Project Workspace</h2>
+
+<section class="card">
+
+<label>Project Type</label>
+<select id="type">
+<option>Website Development</option>
+<option>Android Application</option>
+<option>Desktop Software</option>
+<option>Python Project</option>
+<option>Java Project</option>
+<option>JavaScript Project</option>
+<option>Database Project</option>
+<option>Other</option>
+</select>
+
+<label>Project Topic</label>
+<input id="topic" placeholder="Example: College Management System">
+
+<label>Technology</label>
+<input id="technology" placeholder="Example: HTML, CSS, JavaScript">
+
+<label>Project Requirements</label>
+<textarea id="details" placeholder="Describe what your project should do..."></textarea>
+
+<button onclick="createDraft()">Create Project Draft →</button>
+
+<div id="result" class="result"></div>
+
+</section>
+
+</main>
+
+<script>
+function createDraft(){
+
+const type=document.getElementById("type").value;
+const topic=document.getElementById("topic").value.trim();
+const tech=document.getElementById("technology").value.trim();
+const details=document.getElementById("details").value.trim();
+
+if(!topic){
+alert("Please enter your project topic.");
+return;
+}
+
+const draft=
+"SOFTWARE PROJECT PLAN\n\n"+
+"Project Name: "+topic+"\n"+
+"Project Type: "+type+"\n"+
+"Technology: "+(tech||"Not specified")+"\n\n"+
+"Requirements:\n"+(details||"Not provided")+
+"\n\nPROJECT STRUCTURE\n"+
+"1. Introduction\n"+
+"2. Problem Statement\n"+
+"3. Objectives\n"+
+"4. Technology Requirements\n"+
+"5. System Design\n"+
+"6. Development\n"+
+"7. Testing\n"+
+"8. Conclusion\n"+
+"9. Future Scope\n\n"+
+"Note: This is a project planning draft. Actual software code and testing are still required.";
+
+document.getElementById("result").textContent=draft;
+
+}
+</script>
+
+</body>
+</html>
+
