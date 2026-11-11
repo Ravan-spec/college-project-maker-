@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Viva Preparation</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#080d1b;color:white;font-family:Arial}
+header{padding:20px;border-bottom:1px solid #293650;color:#9bbaff;font-weight:bold}
+main{max-width:750px;margin:auto;padding:22px 16px}
+a{color:#91b2ff;text-decoration:none}
+.hero{background:linear-gradient(135deg,#172c55,#39246b);padding:25px;border-radius:18px;margin:20px 0}
+.icon{font-size:40px}h1{margin:12px 0}
+p{color:#aab8d1;font-size:14px;line-height:1.6}
+.card{background:#111a2c;border:1px solid #293650;border-radius:14px;padding:18px;margin-top:17px}
+input,textarea,select{width:100%;padding:13px;background:#080d1b;border:1px solid #35435e;color:white;border-radius:9px;margin:9px 0 15px}
+button{background:#779aff;color:#080d1b;padding:12px;border:0;border-radius:9px;font-weight:bold;margin:5px}
+.question{padding:15px;border:1px solid #35435e;border-radius:10px;margin:12px 0}
+.answer{display:none;color:#aab8d1;margin-top:12px;line-height:1.6}
+</style>
+</head>
+<body>
+<header>PROJECT MAKER · VIVA LAB</header>
+<main>
+<a href="../index.html">← Back to Home</a>
+<section class="hero">
+<div class="icon">🎓</div>
+<h1>Viva Preparation</h1>
+<p>Practice project viva questions and prepare to explain your work.</p>
+</section>
+<section class="card">
+<h2>Prepare Questions</h2>
+<label>Project Name</label>
+<input id="topic" placeholder="Enter your project name">
+<label>Project Technology</label>
+<input id="tech" placeholder="Example: Python, Java, IoT">
+<button onclick="generate()">Generate Practice Questions</button>
+<div id="result"></div>
+</section>
+</main>
+<script>
+function generate(){
+const topic=document.getElementById("topic").value.trim();
+const tech=document.getElementById("tech").value.trim();
+if(!topic)return alert("Enter project name");
+const questions=[
+["What is your project about?","Explain the purpose, main features and intended users of "+topic+"."],
+["Why did you choose this project?","Explain the problem or need that motivated your project."],
+["What are the main objectives?","Describe the measurable goals of your project."],
+["Which technologies did you use?","Explain the role of each technology used: "+(tech||"your chosen tools") +"."],
+["Explain the working of your project.","Describe the actual workflow step by step."],
+["What challenges did you face?","Discuss a real challenge and how you addressed it."],
+["How did you test your project?","Explain your test cases and actual results."],
+["What are the limitations?","Describe what your current version cannot do."],
+["What is the future scope?","Explain realistic future improvements."],
+["What did you learn?","Discuss the technical and practical skills you gained."]
+];
+const result=document.getElementById("result");
+result.innerHTML="";
+questions.forEach((q,i)=>{
+const box=document.createElement("div");
+box.className="question";
+const title=document.createElement("strong");
+title.textContent=(i+1)+". "+q[0];
+const answer=document.createElement("div");
+answer.className="answer";
+answer.textContent=q[1];
+const btn=document.createElement("button");
+btn.textContent="Show Hint";
+btn.onclick=()=>{
+answer.style.display=answer.style.display==="block"?"none":"block";
+btn.textContent=answer.style.display==="block"?"Hide Hint":"Show Hint";
+};
+box.append(title,document.createElement("br"),btn,answer);
+result.appendChild(box);
+});
+}
+</script>
+</body>
+</html>
